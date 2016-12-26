@@ -55,7 +55,9 @@ function flashArduino {
 	#sleep 1;
 	$util_dir/bin/setserial;
 	#sleep 1;
-	echo "38" > /sys/class/gpio/export;
+	if [ ! -d /sys/class/gpio/gpio38 ]; then
+		echo "38" > /sys/class/gpio/export;
+	fi
 	#sleep 1;
 	echo "out" > /sys/class/gpio/gpio38/direction;
 	#sleep 1;
